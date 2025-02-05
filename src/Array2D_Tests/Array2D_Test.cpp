@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <utility>
 #include "Array2D.hpp"
 
 int main()
@@ -12,12 +13,8 @@ int main()
 			a[i][ii] = ii;
 		}
 	}
-	try {
-		Array2D<int> b(a);
-	}
-	catch (const e){
-		std::cout<<"tEst\n";
-	}
+	Array2D<int> b(std::move(a));
+	std::cout<<a[1][3]<<"\n";
 	std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count() <<"\n";
 	return 0;
 }
